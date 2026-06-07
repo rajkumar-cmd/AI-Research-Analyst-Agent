@@ -1,0 +1,22 @@
+services:
+  web:
+    environment:
+      APP_ENV: development
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+    volumes:
+      - ./apps/web:/app/apps/web
+
+  api:
+    environment:
+      APP_ENV: development
+      LOG_LEVEL: debug
+    volumes:
+      - ./apps/api:/app/apps/api
+
+  worker:
+    environment:
+      APP_ENV: development
+      LOG_LEVEL: debug
+    volumes:
+      - ./apps/api:/app/apps/api
+

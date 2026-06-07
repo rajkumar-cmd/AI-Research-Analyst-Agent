@@ -1,0 +1,43 @@
+# Environment
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+logs/
+
+# Node
+node_modules/
+.next/
+out/
+dist/
+coverage/
+.turbo/
+.vercel/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.venv/
+venv/
+htmlcov/
+.coverage
+build/
+*.egg-info/
+
+# Local data
+.data/
+postgres-data/
+redis-data/
+chroma-data/
+
+# Editors and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
