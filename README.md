@@ -2,6 +2,8 @@
 
 AI Research Analyst OS for reliable multi-step research workflows.
 
+Production-grade AI research platform using LangGraph, FastAPI, Next.js, ChromaDB, and human-in-the-loop workflows to generate validated research reports with citations, token tracking, and admin analytics.
+
 This project demonstrates how to design production-grade AI agent systems with state, human approval, hybrid retrieval, source validation, observability, quota control, and admin governance instead of relying on one-shot LLM calls.
 
 ## Product Vision
@@ -108,4 +110,3 @@ This project shows how to design reliable multi-step agent systems with state, h
 - Next.js and FastAPI applications are not initialized on Day 1.
 - Auth, LangGraph execution, vector search, and admin dashboards are planned for later days.
 - Docker app services point to future Dockerfiles that will be added as the frontend, backend, and worker are implemented.
-
