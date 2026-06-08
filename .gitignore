@@ -26,6 +26,7 @@ __pycache__/
 venv/
 htmlcov/
 .coverage
+*.tsbuildinfo
 build/
 *.egg-info/
 
@@ -40,4 +41,3 @@ chroma-data/
 Thumbs.db
 .idea/
 .vscode/
-

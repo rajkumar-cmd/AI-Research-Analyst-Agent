@@ -1,0 +1,17 @@
+{
+  "name": "research-agent-os",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "npm@11.6.2",
+  "workspaces": [
+    "apps/web",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace @research-agent-os/web",
+    "build": "npm run build --workspace @research-agent-os/web",
+    "lint": "npm run lint --workspace @research-agent-os/web",
+    "typecheck": "npm run typecheck --workspace @research-agent-os/web"
+  }
+}
+

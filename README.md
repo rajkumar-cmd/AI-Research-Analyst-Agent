@@ -65,6 +65,10 @@ flowchart TD
 
 Day 1 initializes the production monorepo structure and developer experience foundation. Application code is intentionally deferred so each later day has a focused, reviewable commit.
 
+## Day 2 Status
+
+Day 2 adds the Next.js App Router frontend foundation and a polished SaaS-style landing page for the AI Research Analyst OS. The page includes a hero experience, product pillars, LangGraph workflow visualization, hybrid retrieval explanation, admin analytics preview, report preview, tech stack badges, and CTA buttons.
+
 ## Getting Started
 
 Copy the example environment file and update secrets locally:
@@ -91,6 +95,13 @@ Start the local dependency stack once Docker is available:
 make docker-up
 ```
 
+Run the web app locally once Node dependencies are installed:
+
+```bash
+npm install
+npm run dev --workspace @research-agent-os/web
+```
+
 ## Local Services
 
 Default development ports:
@@ -107,6 +118,7 @@ This project shows how to design reliable multi-step agent systems with state, h
 
 ## Known Limitations
 
-- Next.js and FastAPI applications are not initialized on Day 1.
+- The Day 2 frontend is implemented, but auth pages and dashboard routes are placeholders for upcoming days.
+- FastAPI is not initialized yet.
 - Auth, LangGraph execution, vector search, and admin dashboards are planned for later days.
 - Docker app services point to future Dockerfiles that will be added as the frontend, backend, and worker are implemented.
