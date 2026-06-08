@@ -3,12 +3,15 @@ import {
   ArrowRight,
   BarChart3,
   CheckCircle2,
+  ClipboardCheck,
   Database,
   FileText,
   GitBranch,
+  Gauge,
   Layers3,
   LockKeyhole,
   Network,
+  Quote,
   SearchCheck,
   ShieldCheck,
   Sparkles,
@@ -20,32 +23,32 @@ import {
 import { Button } from "@/components/ui/button";
 
 const workflowSteps = [
-  "Quota Guard",
-  "Planner",
-  "Research",
-  "Hybrid Retrieval",
-  "Source Validation",
-  "Summarizer",
-  "Critic",
-  "Human Approval",
-  "Report Writer"
+  "Check Limits",
+  "Plan Research",
+  "Find Evidence",
+  "Rank Sources",
+  "Validate Claims",
+  "Summarize",
+  "Quality Review",
+  "Review Draft",
+  "Final Report"
 ];
 
 const platformPillars = [
   {
     icon: Workflow,
-    title: "Stateful agent orchestration",
-    text: "LangGraph coordinates quota checks, planning, retrieval, validation, critique, approval, and report writing as observable steps."
+    title: "Research that follows a plan",
+    text: "LangGraph breaks each request into clear steps, so users can see how an answer was planned, checked, and written."
   },
   {
     icon: SearchCheck,
-    title: "Citation-ready retrieval",
-    text: "Hybrid search combines dense retrieval, keyword filters, metadata scoring, rank fusion, and source validation before report generation."
+    title: "Sources you can trust",
+    text: "Hybrid search and source checks help separate useful evidence from weak, stale, duplicate, or unsupported references."
   },
   {
     icon: ShieldCheck,
-    title: "Governed research output",
-    text: "Human approval, role controls, usage quotas, token accounting, and admin analytics make the system reviewable and accountable."
+    title: "Review before publishing",
+    text: "A built-in draft review step gives teams control before the final report is generated, saved, and shared."
   }
 ];
 
@@ -84,9 +87,15 @@ const reportSections = [
 ];
 
 const adminMetrics = [
-  { label: "Reports", value: "128", icon: BarChart3 },
-  { label: "Tokens", value: "2.4M", icon: Database },
-  { label: "Avg latency", value: "41s", icon: TimerReset }
+  { label: "Reports generated", value: "128", icon: BarChart3 },
+  { label: "Source checks", value: "1.9k", icon: ClipboardCheck },
+  { label: "Avg report time", value: "41s", icon: TimerReset }
+];
+
+const heroStats = [
+  { label: "Source quality", value: "92%" },
+  { label: "Citations mapped", value: "34" },
+  { label: "Workflow steps", value: "9" }
 ];
 
 export default function LandingPage() {
@@ -98,82 +107,122 @@ export default function LandingPage() {
             <span className="flex h-8 w-8 items-center justify-center rounded-md bg-[#f9b24a] text-[#14211f]">
               <Sparkles className="h-4 w-4" aria-hidden="true" />
             </span>
-            research-agent-os
+            Research Agent OS
           </Link>
           <nav className="hidden items-center gap-7 text-sm text-white/75 md:flex">
             <Link href="#workflow" className="hover:text-white">
-              Workflow
+              How it works
             </Link>
             <Link href="#retrieval" className="hover:text-white">
-              Retrieval
+              Sources
             </Link>
             <Link href="#analytics" className="hover:text-white">
-              Analytics
+              Insights
             </Link>
             <Link href="#report" className="hover:text-white">
-              Report
+              Sample report
             </Link>
           </nav>
           <Button asChild size="sm" variant="secondary">
             <Link href="/sign-up">
               <Zap className="h-4 w-4" aria-hidden="true" />
-              Start demo
+              Try the demo
             </Link>
           </Button>
         </div>
       </header>
 
-      <section className="workflow-scene relative min-h-[760px] text-white">
+      <section className="workflow-scene relative min-h-[820px] text-white">
         <div className="absolute inset-0 opacity-90">
           <div className="scene-line left-[57%] top-[27%] w-[190px] rotate-[18deg]" />
           <div className="scene-line left-[64%] top-[43%] w-[170px] rotate-[-20deg]" />
           <div className="scene-line left-[54%] top-[59%] w-[240px] rotate-[9deg]" />
           <div className="scene-line left-[74%] top-[34%] w-[120px] rotate-[87deg]" />
           <div className="absolute left-[58%] top-[22%] hidden h-20 w-52 rounded-md border border-[#64d6c4]/40 bg-[#1d3834]/80 p-4 shadow-soft lg:block">
-            <p className="text-xs uppercase text-[#64d6c4]">Planner Agent</p>
-            <p className="mt-2 text-sm text-white/80">Breaks broad questions into verifiable research tasks.</p>
+            <p className="text-xs uppercase text-[#64d6c4]">Research Plan</p>
+            <p className="mt-2 text-sm text-white/80">Turns broad questions into focused evidence checks.</p>
           </div>
           <div className="absolute left-[74%] top-[38%] hidden h-24 w-56 rounded-md border border-[#f98f6f]/45 bg-[#2b302b]/85 p-4 shadow-soft lg:block">
-            <p className="text-xs uppercase text-[#f98f6f]">Validation Gate</p>
+            <p className="text-xs uppercase text-[#f98f6f]">Source Review</p>
             <p className="mt-2 text-sm text-white/80">Scores credibility, freshness, and citation coverage.</p>
           </div>
           <div className="absolute left-[60%] top-[61%] hidden h-24 w-64 rounded-md border border-[#f9b24a]/45 bg-[#323023]/85 p-4 shadow-soft lg:block">
-            <p className="text-xs uppercase text-[#f9b24a]">Human Approval</p>
-            <p className="mt-2 text-sm text-white/80">Pauses before final report generation for review.</p>
+            <p className="text-xs uppercase text-[#f9b24a]">Draft Approval</p>
+            <p className="mt-2 text-sm text-white/80">Lets a reviewer approve or request changes first.</p>
           </div>
           <div className="workflow-dot absolute left-[83%] top-[21%] h-5 w-5 rounded-full bg-[#64d6c4]" />
           <div className="workflow-dot absolute left-[70%] top-[53%] h-4 w-4 rounded-full bg-[#f98f6f]" />
           <div className="workflow-dot absolute left-[86%] top-[66%] h-5 w-5 rounded-full bg-[#f9b24a]" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[760px] max-w-7xl flex-col justify-center px-4 pb-16 pt-28 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
+        <div className="relative mx-auto grid min-h-[820px] max-w-7xl items-center gap-12 px-4 pb-16 pt-28 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8">
+          <div>
             <div className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/10 px-3 py-2 text-sm text-white/80">
               <GitBranch className="h-4 w-4 text-[#64d6c4]" aria-hidden="true" />
-              LangGraph-native research workflow
+              Planned research, checked sources, clear citations
             </div>
             <h1 className="mt-7 max-w-4xl text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
               AI Research Analyst OS for Reliable Multi-Step Research Workflows
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">
-              Generate validated research reports using LangGraph, hybrid search, source validation, human approval,
-              and token-level observability.
+              Create polished research reports with trusted sources, reviewable drafts, clear recommendations, and a
+              step-by-step record of how the answer was produced.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" variant="secondary">
                 <Link href="/dashboard/new-research">
                   <Sparkles className="h-4 w-4" aria-hidden="true" />
-                  Generate report
+                  Start a report
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="border-white/25 bg-white/10 text-white hover:bg-white/20">
                 <Link href="#workflow">
-                  View workflow
+                  See how it works
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
               </Button>
             </div>
+            <div className="mt-9 grid max-w-2xl gap-3 sm:grid-cols-3">
+              {heroStats.map((stat) => (
+                <div key={stat.label} className="rounded-md border border-white/14 bg-white/10 p-4">
+                  <p className="text-2xl font-bold">{stat.value}</p>
+                  <p className="mt-1 text-xs font-medium uppercase text-white/62">{stat.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
+
+          <article className="relative rounded-md border border-white/16 bg-white p-5 text-[#15251f] shadow-soft">
+            <div className="flex items-center justify-between border-b pb-4">
+              <div>
+                <p className="text-xs font-bold uppercase text-primary">Live report preview</p>
+                <h2 className="mt-1 text-xl font-bold">AI data engineering trends for 2026</h2>
+              </div>
+              <Gauge className="h-6 w-6 text-[#f98f6f]" aria-hidden="true" />
+            </div>
+            <div className="mt-5 rounded-md bg-[#f4f8f7] p-4">
+              <div className="flex items-start gap-3">
+                <Quote className="mt-1 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
+                <p className="text-sm leading-6 text-[#34423e]">
+                  Research shows a shift toward governed data products, AI-ready lineage, and retrieval pipelines that
+                  combine freshness with source credibility.
+                </p>
+              </div>
+            </div>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              {["5 key trends", "12 supporting sources", "3 competitor examples", "4 practical risks"].map((item) => (
+                <div key={item} className="rounded-md border bg-white px-4 py-3 text-sm font-semibold">
+                  {item}
+                </div>
+              ))}
+            </div>
+            <div className="mt-5 rounded-md border border-[#64d6c4]/35 bg-[#ecfbf8] p-4">
+              <div className="flex items-center gap-2 text-sm font-semibold text-primary">
+                <CheckCircle2 className="h-4 w-4" aria-hidden="true" />
+                Draft ready for review before publishing
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
@@ -198,12 +247,12 @@ export default function LandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
             <div>
-              <p className="text-sm font-semibold uppercase text-primary">Workflow visualization</p>
-              <h2 className="mt-3 max-w-3xl text-3xl font-bold sm:text-4xl">A research pipeline you can inspect step by step</h2>
+              <p className="text-sm font-semibold uppercase text-primary">How it works</p>
+              <h2 className="mt-3 max-w-3xl text-3xl font-bold sm:text-4xl">From question to trusted report, one clear step at a time</h2>
             </div>
             <p className="max-w-xl text-sm leading-6 text-muted-foreground">
-              Each node becomes a traceable unit with status, latency, token usage, and output payloads for later
-              debugging and admin review.
+              Each step shows progress, evidence, and quality checks so users understand what happened before the final
+              report appears.
             </p>
           </div>
 
@@ -223,11 +272,11 @@ export default function LandingPage() {
       <section id="retrieval" className="bg-white py-20 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
           <div>
-            <p className="text-sm font-semibold uppercase text-primary">Hybrid retrieval</p>
-            <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Source discovery built for citation quality</h2>
+            <p className="text-sm font-semibold uppercase text-primary">Better sources</p>
+            <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Evidence discovery built for citation quality</h2>
             <p className="mt-5 text-sm leading-6 text-muted-foreground">
-              The retrieval layer is planned around ChromaDB collections, provider abstractions, citation-ready result
-              objects, and validation metadata that survives into the final report.
+              The source layer is designed to find relevant evidence, filter weak references, and keep citation details
+              attached to the report.
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -245,11 +294,11 @@ export default function LandingPage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
             <div>
-              <p className="text-sm font-semibold uppercase text-[#64d6c4]">Admin analytics preview</p>
-              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Operational visibility for every run</h2>
+              <p className="text-sm font-semibold uppercase text-[#64d6c4]">Team insights preview</p>
+              <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Know what every research run costs and produces</h2>
               <p className="mt-5 text-sm leading-6 text-white/72">
-                Admin views will surface user quotas, failed runs, model spend, step-level token usage, and report
-                throughput so the agent behaves like a governed product.
+                Team views will show report volume, usage limits, model spend, quality checks, and failed runs so the
+                product feels transparent from day one.
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
@@ -268,11 +317,11 @@ export default function LandingPage() {
       <section id="report" className="bg-[#f7f9fb] py-20 sm:py-24">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 lg:grid-cols-[1fr_1fr] lg:px-8">
           <div>
-            <p className="text-sm font-semibold uppercase text-primary">Report preview</p>
-            <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Structured output that feels boardroom-ready</h2>
+            <p className="text-sm font-semibold uppercase text-primary">Sample report</p>
+            <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Structured output that feels ready to share</h2>
             <p className="mt-5 text-sm leading-6 text-muted-foreground">
-              The final research artifact will combine executive clarity with traceable evidence, source scoring, model
-              metadata, and a timeline of agent decisions.
+              The final report combines plain-English recommendations with evidence, source scoring, model details, and
+              a timeline of the research process.
             </p>
             <div className="mt-7 flex flex-wrap gap-2">
               {techStack.map((tech) => (
@@ -301,7 +350,7 @@ export default function LandingPage() {
             <div className="mt-6 rounded-md border border-[#64d6c4]/35 bg-[#ecfbf8] p-4">
               <div className="flex items-center gap-2 text-sm font-semibold text-primary">
                 <LockKeyhole className="h-4 w-4" aria-hidden="true" />
-                Human approval required before final generation
+                Review required before the final report is saved
               </div>
             </div>
           </article>
@@ -311,12 +360,12 @@ export default function LandingPage() {
       <section className="bg-white py-16">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
           <div>
-            <p className="text-sm font-semibold uppercase text-primary">Built for interviews and GitHub progress</p>
-            <h2 className="mt-2 text-3xl font-bold">Day 2 turns the scaffold into a visible product surface.</h2>
+            <p className="text-sm font-semibold uppercase text-primary">Ready for real users</p>
+            <h2 className="mt-2 text-3xl font-bold">Create an account and start your first research report.</h2>
           </div>
           <Button asChild size="lg">
             <Link href="/sign-up">
-              Continue to auth
+              Create your account
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </Button>
