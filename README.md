@@ -69,6 +69,10 @@ Day 1 initializes the production monorepo structure and developer experience fou
 
 Day 2 adds the Next.js App Router frontend foundation and a polished SaaS-style landing page for the AI Research Analyst OS. The page includes a hero experience, product pillars, LangGraph workflow visualization, hybrid retrieval explanation, admin analytics preview, report preview, tech stack badges, and CTA buttons.
 
+## Day 3 Status
+
+Day 3 adds user-friendly sign-in and sign-up screens with React Hook Form, Zod validation, loading states, validation messages, success feedback, and an API client placeholder ready for the Day 4 FastAPI auth endpoints.
+
 ## Getting Started
 
 Copy the example environment file and update secrets locally:
@@ -118,7 +122,8 @@ This project shows how to design reliable multi-step agent systems with state, h
 
 ## Known Limitations
 
-- The Day 2 frontend is implemented, but auth pages and dashboard routes are placeholders for upcoming days.
+- The Day 3 frontend auth pages are implemented with demo submit behavior while the real backend endpoints are still pending.
+- Dashboard routes are placeholders for upcoming days.
 - FastAPI is not initialized yet.
 - Auth, LangGraph execution, vector search, and admin dashboards are planned for later days.
 - Docker app services point to future Dockerfiles that will be added as the frontend, backend, and worker are implemented.

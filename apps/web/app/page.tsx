@@ -170,7 +170,7 @@ export default function LandingPage() {
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" variant="secondary">
-                <Link href="/dashboard/new-research">
+                <Link href="/sign-up">
                   <Sparkles className="h-4 w-4" aria-hidden="true" />
                   Start a report
                 </Link>
