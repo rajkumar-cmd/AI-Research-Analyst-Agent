@@ -138,15 +138,18 @@ export default function LandingPage() {
           <div className="scene-line left-[64%] top-[43%] w-[170px] rotate-[-20deg]" />
           <div className="scene-line left-[54%] top-[59%] w-[240px] rotate-[9deg]" />
           <div className="scene-line left-[74%] top-[34%] w-[120px] rotate-[87deg]" />
-          <div className="absolute left-[58%] top-[22%] hidden h-20 w-52 rounded-md border border-[#64d6c4]/40 bg-[#1d3834]/80 p-4 shadow-soft lg:block">
+          <div className="signal-packet left-[57%] top-[27%] rotate-[18deg]" />
+          <div className="signal-packet signal-packet-slow left-[64%] top-[43%] rotate-[-20deg]" />
+          <div className="signal-packet signal-packet-late left-[54%] top-[59%] rotate-[9deg]" />
+          <div className="scene-card absolute left-[58%] top-[22%] hidden h-20 w-52 rounded-md border border-[#64d6c4]/40 bg-[#1d3834]/80 p-4 shadow-soft lg:block">
             <p className="text-xs uppercase text-[#64d6c4]">Research Plan</p>
             <p className="mt-2 text-sm text-white/80">Turns broad questions into focused evidence checks.</p>
           </div>
-          <div className="absolute left-[74%] top-[38%] hidden h-24 w-56 rounded-md border border-[#f98f6f]/45 bg-[#2b302b]/85 p-4 shadow-soft lg:block">
+          <div className="scene-card scene-card-delay absolute left-[74%] top-[38%] hidden h-24 w-56 rounded-md border border-[#f98f6f]/45 bg-[#2b302b]/85 p-4 shadow-soft lg:block">
             <p className="text-xs uppercase text-[#f98f6f]">Source Review</p>
             <p className="mt-2 text-sm text-white/80">Scores credibility, freshness, and citation coverage.</p>
           </div>
-          <div className="absolute left-[60%] top-[61%] hidden h-24 w-64 rounded-md border border-[#f9b24a]/45 bg-[#323023]/85 p-4 shadow-soft lg:block">
+          <div className="scene-card scene-card-late absolute left-[60%] top-[61%] hidden h-24 w-64 rounded-md border border-[#f9b24a]/45 bg-[#323023]/85 p-4 shadow-soft lg:block">
             <p className="text-xs uppercase text-[#f9b24a]">Draft Approval</p>
             <p className="mt-2 text-sm text-white/80">Lets a reviewer approve or request changes first.</p>
           </div>
@@ -156,19 +159,19 @@ export default function LandingPage() {
         </div>
 
         <div className="relative mx-auto grid min-h-[820px] max-w-7xl items-center gap-12 px-4 pb-16 pt-28 sm:px-6 lg:grid-cols-[1.02fr_0.98fr] lg:px-8">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/10 px-3 py-2 text-sm text-white/80">
+          <div className="hero-copy">
+            <div className="fade-up inline-flex items-center gap-2 rounded-md border border-white/20 bg-white/10 px-3 py-2 text-sm text-white/80">
               <GitBranch className="h-4 w-4 text-[#64d6c4]" aria-hidden="true" />
               Planned research, checked sources, clear citations
             </div>
-            <h1 className="mt-7 max-w-4xl text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
+            <h1 className="fade-up fade-up-delay-1 mt-7 max-w-4xl text-5xl font-bold leading-tight sm:text-6xl lg:text-7xl">
               AI Research Analyst OS for Reliable Multi-Step Research Workflows
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">
+            <p className="fade-up fade-up-delay-2 mt-6 max-w-2xl text-lg leading-8 text-white/75">
               Create polished research reports with trusted sources, reviewable drafts, clear recommendations, and a
               step-by-step record of how the answer was produced.
             </p>
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="fade-up fade-up-delay-3 mt-9 flex flex-col gap-3 sm:flex-row">
               <Button asChild size="lg" variant="secondary">
                 <Link href="/sign-up">
                   <Sparkles className="h-4 w-4" aria-hidden="true" />
@@ -182,9 +185,9 @@ export default function LandingPage() {
                 </Link>
               </Button>
             </div>
-            <div className="mt-9 grid max-w-2xl gap-3 sm:grid-cols-3">
+            <div className="fade-up fade-up-delay-4 mt-9 grid max-w-2xl gap-3 sm:grid-cols-3">
               {heroStats.map((stat) => (
-                <div key={stat.label} className="rounded-md border border-white/14 bg-white/10 p-4">
+                <div key={stat.label} className="stat-card rounded-md border border-white/14 bg-white/10 p-4">
                   <p className="text-2xl font-bold">{stat.value}</p>
                   <p className="mt-1 text-xs font-medium uppercase text-white/62">{stat.label}</p>
                 </div>
@@ -192,7 +195,7 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <article className="relative rounded-md border border-white/16 bg-white p-5 text-[#15251f] shadow-soft">
+          <article className="report-preview-card relative rounded-md border border-white/16 bg-white p-5 text-[#15251f] shadow-soft">
             <div className="flex items-center justify-between border-b pb-4">
               <div>
                 <p className="text-xs font-bold uppercase text-primary">Live report preview</p>
@@ -200,7 +203,7 @@ export default function LandingPage() {
               </div>
               <Gauge className="h-6 w-6 text-[#f98f6f]" aria-hidden="true" />
             </div>
-            <div className="mt-5 rounded-md bg-[#f4f8f7] p-4">
+            <div className="report-highlight mt-5 rounded-md bg-[#f4f8f7] p-4">
               <div className="flex items-start gap-3">
                 <Quote className="mt-1 h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
                 <p className="text-sm leading-6 text-[#34423e]">
@@ -211,7 +214,7 @@ export default function LandingPage() {
             </div>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               {["5 key trends", "12 supporting sources", "3 competitor examples", "4 practical risks"].map((item) => (
-                <div key={item} className="rounded-md border bg-white px-4 py-3 text-sm font-semibold">
+                <div key={item} className="mini-report-card rounded-md border bg-white px-4 py-3 text-sm font-semibold">
                   {item}
                 </div>
               ))}
@@ -232,7 +235,7 @@ export default function LandingPage() {
             {platformPillars.map((pillar) => {
               const Icon = pillar.icon;
               return (
-                <article key={pillar.title} className="rounded-md border bg-white p-6 shadow-soft">
+                <article key={pillar.title} className="feature-card rounded-md border bg-white p-6 shadow-soft">
                   <Icon className="h-6 w-6 text-primary" aria-hidden="true" />
                   <h2 className="mt-5 text-xl font-semibold">{pillar.title}</h2>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">{pillar.text}</p>
@@ -258,7 +261,7 @@ export default function LandingPage() {
 
           <div className="mt-10 grid gap-3 lg:grid-cols-9">
             {workflowSteps.map((step, index) => (
-              <div key={step} className="relative rounded-md border bg-white p-4 shadow-soft">
+              <div key={step} className="workflow-step-card relative rounded-md border bg-white p-4 shadow-soft">
                 <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-sm font-bold text-white">
                   {index + 1}
                 </div>
@@ -281,7 +284,7 @@ export default function LandingPage() {
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
             {retrievalFeatures.map((feature) => (
-              <div key={feature} className="flex items-center gap-3 rounded-md border bg-[#fbfcfd] p-4">
+              <div key={feature} className="source-chip flex items-center gap-3 rounded-md border bg-[#fbfcfd] p-4">
                 <CheckCircle2 className="h-5 w-5 shrink-0 text-primary" aria-hidden="true" />
                 <span className="text-sm font-medium">{feature}</span>
               </div>
@@ -303,7 +306,7 @@ export default function LandingPage() {
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
               {adminMetrics.map(({ label, value, icon: Icon }) => (
-                <div key={label} className="rounded-md border border-white/10 bg-white/10 p-5">
+                <div key={label} className="metric-card rounded-md border border-white/10 bg-white/10 p-5">
                   <Icon className="h-5 w-5 text-[#f9b24a]" aria-hidden="true" />
                   <p className="mt-5 text-3xl font-bold">{value}</p>
                   <p className="mt-1 text-sm text-white/70">{label}</p>
@@ -325,7 +328,7 @@ export default function LandingPage() {
             </p>
             <div className="mt-7 flex flex-wrap gap-2">
               {techStack.map((tech) => (
-                <span key={tech} className="rounded-md border bg-white px-3 py-2 text-xs font-semibold text-[#25322f]">
+                <span key={tech} className="tech-badge rounded-md border bg-white px-3 py-2 text-xs font-semibold text-[#25322f]">
                   {tech}
                 </span>
               ))}
@@ -342,7 +345,7 @@ export default function LandingPage() {
             </div>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               {reportSections.map((section) => (
-                <div key={section} className="rounded-md bg-[#f1f5f6] px-4 py-3 text-sm font-medium">
+                <div key={section} className="report-section-tile rounded-md bg-[#f1f5f6] px-4 py-3 text-sm font-medium">
                   {section}
                 </div>
               ))}
