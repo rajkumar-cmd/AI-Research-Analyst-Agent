@@ -73,6 +73,10 @@ Day 2 adds the Next.js App Router frontend foundation and a polished SaaS-style 
 
 Day 3 adds user-friendly sign-in and sign-up screens with React Hook Form, Zod validation, loading states, validation messages, success feedback, and an API client placeholder ready for the Day 4 FastAPI auth endpoints.
 
+## Day 4 Status
+
+Day 4 adds the FastAPI backend foundation for authentication: environment-based configuration, SQLAlchemy database session setup, a user model, password hashing, JWT session cookies, signup/signin/logout/me routes, and backend tests that run against SQLite.
+
 ## Getting Started
 
 Copy the example environment file and update secrets locally:
@@ -106,6 +110,18 @@ npm install
 npm run dev --workspace @research-agent-os/web
 ```
 
+Run the API locally after installing backend dependencies:
+
+```bash
+cd apps/api
+python -m venv .venv
+.venv\Scripts\activate
+pip install -e ".[test]"
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+The backend reads `DATABASE_URL` from `.env`. The default value targets the local PostgreSQL service from Docker Compose; tests override it with SQLite.
+
 ## Local Services
 
 Default development ports:
@@ -124,6 +140,7 @@ This project shows how to design reliable multi-step agent systems with state, h
 
 - The Day 3 frontend auth pages are implemented with demo submit behavior while the real backend endpoints are still pending.
 - Dashboard routes are placeholders for upcoming days.
-- FastAPI is not initialized yet.
-- Auth, LangGraph execution, vector search, and admin dashboards are planned for later days.
+- FastAPI auth endpoints now exist, but the frontend still uses its Day 3 demo auth client until it is connected to the API.
+- Alembic migrations are planned for Day 5, so production database tables are not migrated yet.
+- LangGraph execution, vector search, and admin dashboards are planned for later days.
 - Docker app services point to future Dockerfiles that will be added as the frontend, backend, and worker are implemented.
