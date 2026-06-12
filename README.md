@@ -77,6 +77,10 @@ Day 3 adds user-friendly sign-in and sign-up screens with React Hook Form, Zod v
 
 Day 4 adds the FastAPI backend foundation for authentication: environment-based configuration, SQLAlchemy database session setup, a user model, password hashing, JWT session cookies, signup/signin/logout/me routes, and backend tests that run against SQLite.
 
+## Day 5 Status
+
+Day 5 adds the first production database layer: SQLAlchemy models for core product tables and Alembic migration setup with an initial migration for users, research runs, agent steps, token usage, reports, sources, approval requests, admin audit logs, and prompt versions.
+
 ## Getting Started
 
 Copy the example environment file and update secrets locally:
@@ -122,6 +126,13 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
 The backend reads `DATABASE_URL` from `.env`. The default value targets the local PostgreSQL service from Docker Compose; tests override it with SQLite.
 
+Run database migrations once PostgreSQL is available:
+
+```bash
+cd apps/api
+alembic upgrade head
+```
+
 ## Local Services
 
 Default development ports:
@@ -141,6 +152,6 @@ This project shows how to design reliable multi-step agent systems with state, h
 - The Day 3 frontend auth pages are implemented with demo submit behavior while the real backend endpoints are still pending.
 - Dashboard routes are placeholders for upcoming days.
 - FastAPI auth endpoints now exist, but the frontend still uses its Day 3 demo auth client until it is connected to the API.
-- Alembic migrations are planned for Day 5, so production database tables are not migrated yet.
+- Alembic migrations now exist, but they have not been run against a real PostgreSQL instance in this workspace.
 - LangGraph execution, vector search, and admin dashboards are planned for later days.
 - Docker app services point to future Dockerfiles that will be added as the frontend, backend, and worker are implemented.
