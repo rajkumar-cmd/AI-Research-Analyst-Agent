@@ -17,7 +17,7 @@ export async function signIn(input: SignInInput): Promise<AuthResult> {
   await wait(demoDelayMs);
 
   return {
-    message: `Welcome back. ${input.email} is ready for the Day 4 backend connection.`,
+    message: `Welcome back. ${input.email} is ready for the dashboard preview while API wiring is finalized.`,
     redirectTo: "/dashboard"
   };
 }
@@ -26,8 +26,7 @@ export async function signUp(input: SignUpInput): Promise<AuthResult> {
   await wait(demoDelayMs);
 
   return {
-    message: `${input.name}, your account form is ready. The backend signup endpoint lands on Day 4.`,
+    message: `${input.name}, your account form is ready. The real signup endpoint is available and will be connected to the UI next.`,
     redirectTo: "/dashboard"
   };
 }
-

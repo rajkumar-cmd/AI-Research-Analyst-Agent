@@ -81,6 +81,10 @@ Day 4 adds the FastAPI backend foundation for authentication: environment-based 
 
 Day 5 adds the first production database layer: SQLAlchemy models for core product tables and Alembic migration setup with an initial migration for users, research runs, agent steps, token usage, reports, sources, approval requests, admin audit logs, and prompt versions.
 
+## Day 6 Status
+
+Day 6 adds the authenticated dashboard shell: responsive workspace navigation, account-check placeholder, dashboard metrics, quota and usage cards, current workflow preview, recent reports, recent research runs, and placeholder pages for upcoming dashboard flows.
+
 ## Getting Started
 
 Copy the example environment file and update secrets locally:
@@ -150,8 +154,8 @@ This project shows how to design reliable multi-step agent systems with state, h
 ## Known Limitations
 
 - The Day 3 frontend auth pages are implemented with demo submit behavior while the real backend endpoints are still pending.
-- Dashboard routes are placeholders for upcoming days.
-- FastAPI auth endpoints now exist, but the frontend still uses its Day 3 demo auth client until it is connected to the API.
+- Dashboard routes now have a frontend shell with demo data and placeholders for upcoming flows.
+- FastAPI auth endpoints now exist, but the frontend still uses its demo auth client until it is connected to the API.
 - Alembic migrations now exist, but they have not been run against a real PostgreSQL instance in this workspace.
 - LangGraph execution, vector search, and admin dashboards are planned for later days.
 - Docker app services point to future Dockerfiles that will be added as the frontend, backend, and worker are implemented.
