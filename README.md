@@ -89,6 +89,10 @@ Day 6 adds the authenticated dashboard shell: responsive workspace navigation, a
 
 Day 7 adds the first LangGraph workflow skeleton for backend research runs. The API now has typed graph state, deterministic mock LLM provider hooks, quota guard, planner, research, summarizer, critic, and report writer nodes, plus agent step persistence into the existing `agent_steps` table during workflow execution.
 
+## Day 8 Status
+
+Day 8 adds the human approval checkpoint. Research workflows can now pause after critique, create an `approval_requests` record with a saved draft payload, wait for approval, resume directly into report writing after approval, request revisions, or cancel the run when rejected.
+
 ## Getting Started
 
 Copy the example environment file and update secrets locally:
@@ -161,5 +165,5 @@ This project shows how to design reliable multi-step agent systems with state, h
 - Dashboard routes now have a frontend shell with demo data and placeholders for upcoming flows.
 - FastAPI auth endpoints now exist, but the frontend still uses its demo auth client until it is connected to the API.
 - Alembic migrations now exist, but they have not been run against a real PostgreSQL instance in this workspace.
-- LangGraph execution now exists as a backend skeleton with a mock provider; vector search, real LLM calls, human approval interrupts, and admin dashboards are planned for later days.
+- LangGraph execution now exists as a backend skeleton with a mock provider and human approval checkpoint; vector search, real LLM calls, frontend approval screens, and admin dashboards are planned for later days.
 - Docker app services point to future Dockerfiles that will be added as the frontend, backend, and worker are implemented.
