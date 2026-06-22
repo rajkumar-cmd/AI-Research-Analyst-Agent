@@ -97,6 +97,10 @@ Day 8 adds the human approval checkpoint. Research workflows can now pause after
 
 Day 9 adds the research run UI. The dashboard now has a user-facing research creation screen with a query form, preset prompts, output settings, workflow progress timeline, human approval checkpoint panel, and draft report outline that mirrors the backend LangGraph flow.
 
+## Day 10 Status
+
+Day 10 adds the ChromaDB integration layer. The backend now has vector document/result types, deterministic local embeddings for development and tests, a persistent Chroma vector store service, metadata-filtered semantic search, upsert support, and a settings-based vector store factory.
+
 ## Getting Started
 
 Copy the example environment file and update secrets locally:
@@ -169,5 +173,5 @@ This project shows how to design reliable multi-step agent systems with state, h
 - Dashboard routes now include a research run UI with demo workflow state; API-backed run creation and live polling are planned next.
 - FastAPI auth endpoints now exist, but the frontend still uses its demo auth client until it is connected to the API.
 - Alembic migrations now exist, but they have not been run against a real PostgreSQL instance in this workspace.
-- LangGraph execution now exists as a backend skeleton with a mock provider and human approval checkpoint; vector search, real LLM calls, API-backed frontend workflow actions, and admin dashboards are planned for later days.
+- LangGraph execution now exists as a backend skeleton with a mock provider, human approval checkpoint, and Chroma-backed vector search layer; hybrid retrieval, real LLM calls, API-backed frontend workflow actions, and admin dashboards are planned for later days.
 - Docker app services point to future Dockerfiles that will be added as the frontend, backend, and worker are implemented.

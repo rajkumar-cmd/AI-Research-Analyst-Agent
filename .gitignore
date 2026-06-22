@@ -32,6 +32,7 @@ build/
 
 # Local data
 .data/
+.chroma/
 postgres-data/
 redis-data/
 chroma-data/

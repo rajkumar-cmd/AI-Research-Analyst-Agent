@@ -14,6 +14,9 @@ class Settings(BaseSettings):
     api_cors_origins: list[str] = Field(default_factory=lambda: ["http://localhost:3000"])
 
     database_url: str = "postgresql+psycopg://research_agent:research_agent_password@localhost:5432/research_agent_os"
+    chroma_persist_directory: str = ".chroma"
+    chroma_collection_name: str = "research_sources"
+    embedding_dimensions: int = 32
 
     jwt_secret_key: str = "replace-me-with-a-long-random-secret"
     jwt_algorithm: str = "HS256"
@@ -44,4 +47,3 @@ class Settings(BaseSettings):
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
-
