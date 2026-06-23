@@ -101,6 +101,10 @@ Day 9 adds the research run UI. The dashboard now has a user-facing research cre
 
 Day 10 adds the ChromaDB integration layer. The backend now has vector document/result types, deterministic local embeddings for development and tests, a persistent Chroma vector store service, metadata-filtered semantic search, upsert support, and a settings-based vector store factory.
 
+## Day 11 Status
+
+Day 11 adds hybrid retrieval with rank fusion. The backend now has lexical keyword retrieval, reciprocal rank fusion, and a hybrid retriever that combines Chroma vector candidates with exact-term evidence while preserving metadata filters and result explainability.
+
 ## Getting Started
 
 Copy the example environment file and update secrets locally:
@@ -173,5 +177,5 @@ This project shows how to design reliable multi-step agent systems with state, h
 - Dashboard routes now include a research run UI with demo workflow state; API-backed run creation and live polling are planned next.
 - FastAPI auth endpoints now exist, but the frontend still uses its demo auth client until it is connected to the API.
 - Alembic migrations now exist, but they have not been run against a real PostgreSQL instance in this workspace.
-- LangGraph execution now exists as a backend skeleton with a mock provider, human approval checkpoint, and Chroma-backed vector search layer; hybrid retrieval, real LLM calls, API-backed frontend workflow actions, and admin dashboards are planned for later days.
+- LangGraph execution now exists as a backend skeleton with a mock provider, human approval checkpoint, Chroma-backed vector search, and hybrid retrieval with rank fusion; real LLM calls, source validation, API-backed frontend workflow actions, and admin dashboards are planned for later days.
 - Docker app services point to future Dockerfiles that will be added as the frontend, backend, and worker are implemented.
