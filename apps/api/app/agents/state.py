@@ -11,6 +11,9 @@ class ResearchGraphState(TypedDict):
     approval_status: str | None
     plan: list[str]
     research_notes: list[str]
+    source_candidates: list[dict[str, object]]
+    validated_sources: list[dict[str, object]]
+    source_quality_score: float
     summary: str
     critique: str
     report_markdown: str

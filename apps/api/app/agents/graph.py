@@ -11,6 +11,7 @@ from app.agents.nodes import (
     quota_guard_node,
     report_writer_node,
     research_node,
+    source_validation_node,
     summarizer_node,
 )
 from app.agents.providers import LLMProvider, MockLLMProvider
@@ -33,6 +34,7 @@ def build_research_graph(
     workflow.add_node("quota_guard", _node(db, run, "quota_guard", quota_guard_node))
     workflow.add_node("planner_agent", _node(db, run, "planner_agent", lambda state: planner_node(state, provider)))
     workflow.add_node("research_agent", _node(db, run, "research_agent", lambda state: research_node(state, provider)))
+    workflow.add_node("source_validation_agent", _node(db, run, "source_validation_agent", lambda state: source_validation_node(state, db, run)))
     workflow.add_node("summarizer_agent", _node(db, run, "summarizer_agent", lambda state: summarizer_node(state, provider)))
     workflow.add_node("critic_agent", _node(db, run, "critic_agent", lambda state: critic_node(state, provider)))
     workflow.add_node("human_approval", _node(db, run, "human_approval", lambda state: human_approval_node(state, db, run)))
@@ -41,7 +43,8 @@ def build_research_graph(
     workflow.add_edge(START, "quota_guard")
     workflow.add_edge("quota_guard", "planner_agent")
     workflow.add_edge("planner_agent", "research_agent")
-    workflow.add_edge("research_agent", "summarizer_agent")
+    workflow.add_edge("research_agent", "source_validation_agent")
+    workflow.add_edge("source_validation_agent", "summarizer_agent")
     workflow.add_edge("summarizer_agent", "critic_agent")
     workflow.add_edge("critic_agent", "human_approval")
     workflow.add_conditional_edges(
@@ -117,6 +120,9 @@ def _initial_state(run: ResearchRun, approval_required: bool) -> ResearchGraphSt
         "approval_status": None,
         "plan": [],
         "research_notes": [],
+        "source_candidates": [],
+        "validated_sources": [],
+        "source_quality_score": 0.0,
         "summary": "",
         "critique": "",
         "report_markdown": "",

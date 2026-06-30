@@ -4,7 +4,16 @@ from sqlalchemy.orm import Session
 from app.agents.graph import run_research_workflow
 from app.agents.providers import MockLLMProvider
 from app.core.database import Base
-from app.models.research import AgentStep, AgentStepStatus, ApprovalRequest, ApprovalStatus, ResearchRun, ResearchRunStatus
+from app.models.research import (
+    AgentStep,
+    AgentStepStatus,
+    ApprovalRequest,
+    ApprovalStatus,
+    ResearchRun,
+    ResearchRunStatus,
+    Source,
+    SourceValidationStatus,
+)
 from app.models.user import User
 from app.services.approvals import (
     approve_approval_request,
@@ -32,14 +41,20 @@ def test_research_workflow_runs_langgraph_nodes_and_records_steps(db_session: Se
 
     db_session.refresh(run)
     steps = db_session.scalars(select(AgentStep).order_by(AgentStep.started_at)).all()
+    sources = db_session.scalars(select(Source).order_by(Source.credibility_score.desc())).all()
 
     assert run.status == ResearchRunStatus.COMPLETED
     assert run.current_node == "report_writer_agent"
     assert "Research Brief" in final_state["report_markdown"]
+    assert final_state["source_quality_score"] > 0
+    assert len(final_state["validated_sources"]) == 3
+    assert len(sources) == 3
+    assert sources[0].validation_status == SourceValidationStatus.ACCEPTED
     assert [step.node_name for step in steps] == [
         "quota_guard",
         "planner_agent",
         "research_agent",
+        "source_validation_agent",
         "summarizer_agent",
         "critic_agent",
         "human_approval",
@@ -69,10 +84,12 @@ def test_research_workflow_pauses_for_human_approval_and_resumes_after_approval(
     assert approval_state["approval_request_id"] == approval_request.id
     assert approval_request.status == ApprovalStatus.PENDING
     assert approval_request.draft_payload["summary"]
+    assert approval_request.draft_payload["validated_sources"]
     assert [step.node_name for step in paused_steps] == [
         "quota_guard",
         "planner_agent",
         "research_agent",
+        "source_validation_agent",
         "summarizer_agent",
         "critic_agent",
         "human_approval",

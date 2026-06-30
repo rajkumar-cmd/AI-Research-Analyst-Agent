@@ -121,6 +121,9 @@ def _state_from_approval_request(approval_request: ApprovalRequest) -> ResearchG
         "approval_status": approval_request.status.value,
         "plan": _payload_list(payload, "plan"),
         "research_notes": _payload_list(payload, "research_notes"),
+        "source_candidates": _payload_dict_list(payload, "source_candidates"),
+        "validated_sources": _payload_dict_list(payload, "validated_sources"),
+        "source_quality_score": _payload_float(payload, "source_quality_score", 0.0),
         "summary": _payload_str(payload, "summary", ""),
         "critique": _payload_str(payload, "critique", ""),
         "report_markdown": "",
@@ -139,3 +142,16 @@ def _payload_list(payload: dict[str, Any], key: str) -> list[str]:
         return []
 
     return [item for item in value if isinstance(item, str)]
+
+
+def _payload_dict_list(payload: dict[str, Any], key: str) -> list[dict[str, object]]:
+    value = payload.get(key, [])
+    if not isinstance(value, list):
+        return []
+
+    return [item for item in value if isinstance(item, dict)]
+
+
+def _payload_float(payload: dict[str, Any], key: str, default: float) -> float:
+    value = payload.get(key, default)
+    return value if isinstance(value, float | int) else default
